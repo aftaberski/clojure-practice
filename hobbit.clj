@@ -26,3 +26,11 @@
         (recur remaining
                (into final-body-parts
                      (set [part (matching-part part)])))))))
+
+(def list-of-foods-i-am-eating-right-now
+  ["Bananas" "Crakers" "Peanut Butter"])
+
+(defn print-all-of-the-foodz 
+  []
+  (loop [food list-of-foods-i-am-eating-right-now]
+    (println food)))
