@@ -5,6 +5,10 @@
   []
   println "Test hobbit")
 
+(defn add-one-hundo
+  [num]
+  (+ num 100))
+
 (def hobbit-body-parts 
   [{:name "head" :size 3}
    {:name "left-eye" :size 1}
@@ -61,3 +65,9 @@
       (if (> accumulated-size target)
         part
         (recur remaining (+ accumulated-size (:size (first remaining))))))))
+
+(loop [count 0]
+  (println (str "Count " count))
+  (if (> count 5)
+    (println "l8r!")
+    (recur (inc count))))
