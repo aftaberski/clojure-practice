@@ -99,3 +99,23 @@
   (apply conj target additions))
 
 (def add10 (partial + 10))
+
+(def maxness (partial max 3 5 6))
+
+(def add-missing-things 
+  (partial conj ["coffee maker" "trash can"]))
+
+(defn my-partial
+  [partialized-fn & args]
+  (fn [& more-args]
+    (apply partialized-fn (into args more-args))))
+
+(def add20 (my-partial + 20))
+
+(defn lousy-logger
+  [log-level message]
+  (condp = log-level
+    :warn (clojure.string/lower-case message)
+    :emergency (clojure.string/upper-case message)))
+
+(def warn (partial lousy-logger :warn))
