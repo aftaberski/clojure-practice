@@ -119,3 +119,17 @@
     :emergency (clojure.string/upper-case message)))
 
 (def warn (partial lousy-logger :warn))
+
+(def not-vampire? (complement vampire?))
+
+(defn identify-humans
+  [social-security-numbers]
+  (filter not-vampire?
+          (map vampire-related-details social-security-numbers)))
+
+(defn my-complement
+  [function]
+  (fn [& args]
+       (not (apply function args))))
+
+(def my-pos? (my-complement neg?))
